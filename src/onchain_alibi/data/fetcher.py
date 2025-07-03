@@ -20,7 +20,7 @@ def fetch_data(addr:str, max_pages: int = 1) -> List[Dict]:
     addr = validate_address(addr)
     key = get_api_key() 
     
-    all_rows = List[Dict] = [] 
+    all_rows: List[Dict] = [] 
     for page in range(1, max_pages + 1):
         url = (
             f"{BASE_URL}?module=account&action=txlist"
