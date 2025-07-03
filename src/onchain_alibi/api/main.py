@@ -3,6 +3,8 @@ from onchain_alibi.features.fingerprint import build_features
 from onchain_alibi.models.similarity import score
 from onchain_alibi.data.fetcher import get_wallet_transactions
 
+app = FastAPI()
+
 @app.get("/score/{address}")
 def score_wallet(address: str):
     """
