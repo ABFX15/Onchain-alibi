@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from onchain_alibi.features.fingerprint import build_features
 from onchain_alibi.models.similarity import score
-from onchain_alibi.data.fetcher import get_wallet_transactions
+from onchain_alibi.data.fetcher import fetch_data
 
 app = FastAPI()
 
@@ -16,7 +16,7 @@ def score_wallet(address: str):
     Returns:
         dict: A dictionary containing the wallet address and its similarity score.
     """
-    txs = get_wallet_transactions(address)
+    txs = fetch_data(address)
     features = build_features(txs)
     trust_score = score(features)
     return {"address": address, "trust_score": trust_score}
